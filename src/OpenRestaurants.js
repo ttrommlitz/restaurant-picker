@@ -1,3 +1,5 @@
+import RestaurantComponent from './RestaurantComponent'
+
 const convertTimeString = timeStr => {
   // Check if the time string already matches the hh:mm format
   if (/^\d{2}:\d{2} [ap]m$/i.test(timeStr)) {
@@ -128,7 +130,7 @@ const OpenRestaurants = (time) => {
   return (
     <div>
       {openRestaurants.map(r => {
-        return <li key={r.name}>{r.name}</li>
+        return <RestaurantComponent restaurant={r} />
       })}
     </div>
   )
