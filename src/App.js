@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon'
+import { DateTimePicker } from '@mui/x-date-pickers';
+import OpenRestaurants from './OpenRestaurants.js'
+
+import { useState } from 'react';
+import { DateTime } from 'luxon';
 
 function App() {
+  const [value, setValue] = useState(DateTime.now())
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <LocalizationProvider dateAdapter={AdapterLuxon}>
+      <div className="App">
+        <DateTimePicker 
+          label="Basic date time picker" 
+          value={value}
+          onAccept={newValue => setValue(newValue)}/>
+        <OpenRestaurants time={value} />
+      </div>
+    </LocalizationProvider>
   );
 }
 
