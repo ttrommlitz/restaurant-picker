@@ -129,7 +129,8 @@ const getOpenRestaurants = time => {
   })
 }
 
-const OpenRestaurants = ({ time }) => { 
+const OpenRestaurants = ({ time }) => {
+  if (!time) return 
   const openRestaurants = getOpenRestaurants(time)
   return (
     <div>
