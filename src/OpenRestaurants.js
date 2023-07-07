@@ -113,11 +113,15 @@ const isCurrentlyOpen = (chosenTime, restaurantHours) => {
   }
 
   const currEnd = restaurantHours[currentDay]?.end
+
+  // if closing is midnight or later, set it to just before midnight. Past midnight closing is already handled by checking the day before
+  const finalEnd = currEnd && currEnd.slice(-2) === 'am' ? '11:59 pm' : currEnd
+
   return isGreaterThan(timeString, restaurantHours[currentDay]?.start) 
-    && (isLessThan(timeString, restaurantHours[currentDay]?.end) && currEnd.slice(-2) === 'pm')
+    && (isLessThan(timeString, finalEnd))
 }
 
-const getOpenRestaurants = ({ time }) => {
+const getOpenRestaurants = time => {
   console.log(allRestaurants)
   console.log(time)
   return allRestaurants.filter(r => {
@@ -125,12 +129,12 @@ const getOpenRestaurants = ({ time }) => {
   })
 }
 
-const OpenRestaurants = (time) => { 
+const OpenRestaurants = ({ time }) => { 
   const openRestaurants = getOpenRestaurants(time)
   return (
     <div>
       {openRestaurants.map(r => {
-        return <RestaurantComponent restaurant={r} />
+        return <RestaurantComponent restaurant={r} weekday={time.weekday} />
       })}
     </div>
   )
