@@ -68,8 +68,8 @@ const isGreaterThan = (chosenTime, startTime) => {
   if (chosenTime.slice(-2) === 'pm' && startTime.slice(-2) === 'am') return true
   if (chosenTime.slice(-2) === 'am' && startTime.slice(-2) === 'pm') return false
 
-  let [chosenHours, chosenMinutes] = chosenTime.slice(0, -3).split(':').map(parseInt)
-  let [startHours, startMinutes] = startTime.slice(0, -3).split(':').map(parseInt)
+  let [chosenHours, chosenMinutes] = chosenTime.slice(0, -3).split(':').map(n => parseInt(n))
+  let [startHours, startMinutes] = startTime.slice(0, -3).split(':').map(n => parseInt(n))
 
   // handle edge case for time comparisons
   if (chosenHours === 12) chosenHours = 0
@@ -130,12 +130,12 @@ const getOpenRestaurants = time => {
 }
 
 const OpenRestaurants = ({ time }) => {
-  if (!time) return 
+  if (!time?.isValid) return 
   const openRestaurants = getOpenRestaurants(time)
   return (
     <div>
       {openRestaurants.map(r => {
-        return <RestaurantComponent restaurant={r} weekday={time.weekday} />
+        return <RestaurantComponent key={r.name} restaurant={r} weekday={time.weekday} />
       })}
     </div>
   )
