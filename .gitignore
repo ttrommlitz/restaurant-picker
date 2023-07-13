@@ -4,3 +4,6 @@
 # production
 client/build
 
+#environment
+.env
+
