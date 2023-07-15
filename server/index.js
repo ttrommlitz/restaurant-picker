@@ -8,11 +8,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.post('/', (req, res) => {
-  const time = req.body
+  const { currentDay, timeString } = req.body
 
-  const openRestaurants = getOpenRestaurants(time)
+  const openRestaurants = getOpenRestaurants(currentDay, timeString)
 
-  res.sendStatus(200)
   res.send(openRestaurants)
 })
 

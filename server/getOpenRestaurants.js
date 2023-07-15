@@ -106,10 +106,7 @@ const isLessThan = (chosenTime, endTime) => {
   return true
 }
 
-const isCurrentlyOpen = (chosenTime, restaurantHours) => {
-  const currentDay = chosenTime.weekday
-  const timeString = chosenTime.toFormat('hh:mm a').toLowerCase()
-
+const isCurrentlyOpen = (currentDay, timeString, restaurantHours) => {
   // check if day before ends past midnight
   const dayBefore = currentDay - 1 || 7
   const prevEnd = restaurantHours[dayBefore]?.end
@@ -126,10 +123,11 @@ const isCurrentlyOpen = (chosenTime, restaurantHours) => {
     && (isLessThan(timeString, finalEnd))
 }
 
-export const getOpenRestaurants = time => {
-  console.log(allRestaurants)
-  console.log(time)
-  return allRestaurants.filter(r => {
-    return isCurrentlyOpen(time, r.hours)
+export const getOpenRestaurants = (currentDay, timeString) => {
+  console.log(timeString)
+  const arr =  allRestaurants.filter(r => {
+    return isCurrentlyOpen(currentDay, timeString, r.hours)
   })
+
+  return arr
 }
