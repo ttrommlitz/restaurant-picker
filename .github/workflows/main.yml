@@ -34,5 +34,5 @@ jobs:
           heroku git:remote -a $HEROKU_SERVER_APP_NAME
           git push heroku main
         env:
-          HEROKU_SERVER_APP_NAME: ${{ secrets.SERVER_CLIENT }}
+          HEROKU_SERVER_APP_NAME: ${{ secrets.HEROKU_SERVER }}
       
