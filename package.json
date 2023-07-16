@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Full-stack restaurant-picker application",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "if [ $CLIENT_ENV ]; then npm run postinstall-client; elif [ $SERVER_ENV ]; then npm run postinstall-server; else echo no environment detected, please set CLIENT_ENV or SERVER_ENV; fi",
+      "postinstall-client": "cd packages/client && npm install && npm run build",
+      "postinstall-server": "cd packages/server && npm install"
   },
   "repository": {
     "type": "git",
