@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Run tests
-        run: cd server && npm run test
+        run: cd server && npm install mocha && npm run test
       - name: Heroku login credentials
         run: |
           cat > ~/.netrc <<EOF
