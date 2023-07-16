@@ -1,7 +1,6 @@
 {
-  "name": "server",
+  "name": "restaurant-picker-server",
   "version": "1.0.0",
-  "description": "Restaurant Picker API",
   "main": "index.js",
   "type": "module",
   "scripts": {

@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import express from 'express'
 import { getOpenRestaurants } from './getOpenRestaurants.js'
 
@@ -15,6 +14,6 @@ app.post('/api', (req, res) => {
   res.send(openRestaurants)
 })
 
-const { PORT } = process.env
+const { PORT = 3001 } = process.env
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}!`))
