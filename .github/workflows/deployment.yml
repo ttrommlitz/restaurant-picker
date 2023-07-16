@@ -1,9 +1,10 @@
 name: Deploy To Heroku
 
-on: workflow_dispatch
+on:
+  push
 
 jobs:
-  deploy:
+  deploy restaurant-picker app:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
