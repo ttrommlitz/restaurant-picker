@@ -4,7 +4,7 @@ on:
   push
 
 jobs:
-  deploy restaurant-picker app:
+  deploy_restaurant-picker_app:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
