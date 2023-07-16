@@ -24,8 +24,9 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
       - name: Deploy client
-        run: heroku git:remote -a $HEROKU_CLIENT_APP_NAME
-        run: git push heroku main
+        run: |
+          heroku git:remote -a $HEROKU_CLIENT_APP_NAME
+          git push heroku main
         env:
           HEROKU_CLIENT_APP_NAME: ${{ secrets.HEROKU_CLIENT }}
       - name: Deploy server
