@@ -1,10 +1,12 @@
-name: Deploy To Heroku
+name: Deploy Client To Heroku
 
 on:
-  push
+  push:
+    paths:
+      - 'client/**/*.*'
 
 jobs:
-  deploy_restaurant-picker_app:
+  deploy_server:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -30,10 +32,3 @@ jobs:
           git push heroku main
         env:
           HEROKU_CLIENT_APP_NAME: ${{ secrets.HEROKU_CLIENT }}
-      - name: Deploy server
-        run: |
-          heroku git:remote -a $HEROKU_SERVER_APP_NAME
-          git push heroku main
-        env:
-          HEROKU_SERVER_APP_NAME: ${{ secrets.HEROKU_SERVER }}
-      
