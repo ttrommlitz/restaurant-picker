@@ -1,3 +1,4 @@
+import './css/OpenRestaurants.css'
 import RestaurantComponent from './RestaurantComponent'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
@@ -9,12 +10,12 @@ const OpenRestaurants =  ({ time }) => {
     const fetchData = async () => {
       try {
         if (!time?.isValid) return 
-        const response = await axios.post('/', {
+        const { data } = await axios.post('/', {
           currentDay: time.weekday,
           timeString: time.toFormat('hh:mm a').toLowerCase()
         })
 
-        setOpenRestaurants(response.data)
+        setOpenRestaurants(data)
       } catch (err) {
         console.log(err)
       }
@@ -25,7 +26,7 @@ const OpenRestaurants =  ({ time }) => {
 
   if (time?.isValid) {
     return (
-      <div>
+      <div className='all-restaurants-container'>
         {
           openRestaurants.length 
             ? openRestaurants.map(r => {

@@ -1,10 +1,12 @@
+import './css/RestaurantComponent.css'
+
 const RestaurantComponent = ({ restaurant, weekday }) => {
   const { start, end } = restaurant.hours[weekday]
 
   return (
-    <div>
-      <div>{restaurant.name}</div>
-      <div>{`Open from ${start} to ${end} today`}</div>
+    <div className='restaurant-container'>
+      <p>{restaurant.name}</p>
+      <p>{`Open from ${start} to ${end} today`}</p>
     </div>
   )
 }

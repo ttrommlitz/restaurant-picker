@@ -125,9 +125,7 @@ const isCurrentlyOpen = (currentDay, timeString, restaurantHours) => {
 
 export const getOpenRestaurants = (currentDay, timeString) => {
   console.log(timeString)
-  const arr =  allRestaurants.filter(r => {
+  return allRestaurants.filter(r => {
     return isCurrentlyOpen(currentDay, timeString, r.hours)
   })
-
-  return arr
 }
