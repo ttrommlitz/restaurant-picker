@@ -10,7 +10,7 @@ const OpenRestaurants =  ({ time }) => {
     const fetchData = async () => {
       try {
         if (!time?.isValid) return 
-        const { data } = await axios.post('/', {
+        const { data } = await axios.post('/api', {
           currentDay: time.weekday,
           timeString: time.toFormat('hh:mm a').toLowerCase()
         })

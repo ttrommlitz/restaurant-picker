@@ -7,7 +7,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.post('/', (req, res) => {
+app.post('/api', (req, res) => {
   const { currentDay, timeString } = req.body
 
   const openRestaurants = getOpenRestaurants(currentDay, timeString)

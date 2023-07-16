@@ -1,5 +1,5 @@
-import assert from 'assert';
-import { getOpenRestaurants } from '../getOpenRestaurants.js';
+import assert from 'assert'
+import { getOpenRestaurants } from '../getOpenRestaurants.js'
 
 describe('Get Open Restaurants', function () {
   it('Returns correct restaurants for Sunday at 12:15 am', function () {
