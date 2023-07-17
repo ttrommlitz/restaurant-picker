@@ -3,11 +3,11 @@ name: Deploy Client To Heroku
 on:
   push:
     paths:
-      - 'client/**/*.*'
+      - 'client/**/*'
   workflow_dispatch:
 
 jobs:
-  deploy_server:
+  deploy_client:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository

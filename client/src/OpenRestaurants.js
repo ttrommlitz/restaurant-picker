@@ -13,7 +13,7 @@ const OpenRestaurants =  ({ time }) => {
         const { data } = await axios.post('/api', {
           currentDay: time.weekday,
           timeString: time.toFormat('hh:mm a').toLowerCase()
-        })
+        }, { baseURL: process.env.REACT_APP_EXPRESS_SERVER_URL || 'http://localhost:3001'})
 
         setOpenRestaurants(data)
       } catch (err) {
